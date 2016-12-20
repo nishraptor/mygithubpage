@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+<script>
+window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 10);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+</script>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-    <!-- OPTIONAL: description -->
     <meta name="description" content="">
-    <!-- OPTIONAL: author -->
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="icon.png" />
@@ -16,18 +38,11 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <!-- Link the main.css stylesheet -->
     <link href="css/main.css" rel="stylesheet">
     
-    <!-- OPTIONAL: Google Fonts (don't forget to edit main.css also) -->
     <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
    
  </head>
  <body>
@@ -45,8 +60,8 @@
            <br> &nbsp;
            <br> &nbsp;
            <a class="semi-transparent-button" onClick = "window.open('Resume.pdf');" href="#">Resume</a>
-           <a class="semi-transparent-button" href="#about">Projects</a>
-           <a class="semi-transparent-button" href="#">Contact</a>       
+           <a class="semi-transparent-button" onclick = "smoothScroll(document.getElementById('about'))">Projects</a>
+           <a class="semi-transparent-button"  onclick = "smoothScroll(document.getElementById('contact'))">Contact</a>       
            <br> &nbsp;
            <h5>ABOUT</h5>
            </div>
@@ -70,9 +85,9 @@
        <div class="col-lg-6">
 </div>
  
-     </div><!--/.row-->
-   </div><!--/.container-->
- </div><!--/ #intro-->
+     </div>
+   </div>
+ </div>
 
  </body>
 
