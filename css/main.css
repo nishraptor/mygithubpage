@@ -79,6 +79,21 @@ a:after {
   transition: all 0.3s ease-out;
 }
 
+.star {
+        visibility: hidden;
+    }
+
+.fadeIn {
+        -webkit-animation: animat_show 3.2s;
+        animation: animat_show 3.2s;
+        visibility: visible !important;
+}
+
+@-webkit-keyframes animat_show{
+        0%{opacity:0}
+        100%{opacity:1}
+    }
+
 /*---------------------------------------------------
   SECTION WRAPS
 ---------------------------------------------------*/
@@ -122,10 +137,11 @@ a:after {
 
 /* About Wrap */
 .about {
+  display: block;
   background: #2c3e50;
   background: url(../images/Astronaut.jpg) no-repeat center top;
-  padding-top: 60px;
-  padding-bottom: 1200px;
+  margin:0px;
+  padding-bottom:700px;
   color: white;
 } 
 
@@ -138,6 +154,9 @@ a:after {
   font-size: 20px;
   padding-right: 8px;
   vertical-align: middle;
+}
+.pic {
+  display: block;
 }
 
 .footer {
