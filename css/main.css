@@ -141,7 +141,8 @@ a:after {
   background: #2c3e50;
   background: url(../images/Astronaut.jpg) no-repeat center top;
   margin:0px;
-  padding-bottom:700px;
+  background-size: 100%;
+  padding-bottom:1000px;
   color: white;
 } 
 
