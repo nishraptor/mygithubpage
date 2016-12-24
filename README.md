@@ -1,1 +1,1 @@
-# mygithubpage
+This is a simple website that I created to showcase my progress with personal projects and link to social media.
